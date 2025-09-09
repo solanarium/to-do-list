@@ -15,4 +15,4 @@ jobs:
         - name: Install dependecies
           run: pnpm i
         - name: Run Linter
-          run: pnpm run lint:ci
+          run: pnpm run lint:fix

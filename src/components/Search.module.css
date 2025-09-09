@@ -3,6 +3,7 @@
     border: 1px solid #6C63FF;
     border-radius: 8px;
     width: 100%;
+    cursor: pointer;
 }
 
 .input::placeholder {
