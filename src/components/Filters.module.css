@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    gap: 16px;
+}
+
+.button_filter {
+    display: flex;
+    gap: 20px;
+}
+
+.button_filter.open {
+    background-color: #534CC2;
+    border: #6C63FF 2px solid;
+    box-shadow: none;
+}
+
+.icon {
+    transition: transform 0.5s;
+}
+
+.icon.open {
+transform: rotate(180deg);
+}
+
+.search {
+    flex-grow: 1;
+}

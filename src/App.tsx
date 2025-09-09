@@ -1,9 +1,15 @@
+import type { FC } from 'react'
 
-function App() {
+import { Container } from './components/Container'
+import { Header } from './components/Header'
+import { List } from './components/List'
 
+const App: FC = () => {
   return (
-    <>
-    </>
+    <Container>
+      <Header />
+      <List />
+    </Container>
   )
 }
 
