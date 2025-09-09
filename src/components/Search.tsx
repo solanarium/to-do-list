@@ -19,7 +19,7 @@ export const Search: FC<ComponentProps<'input'>> = ({ className, ...rest }) => {
         {...rest}
       />
       <SearchIcon
-        className={styles.searchIcon}
+        className={styles.search_icon}
         strokeWidth={1.5}
         color="#6C63FF"
       />
