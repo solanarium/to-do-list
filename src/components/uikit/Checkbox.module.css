@@ -1,0 +1,15 @@
+.checkbox {
+  width: 26px;
+  height: 26px;
+  border: 1px #6c63ff solid;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.checkbox.checked {
+  background-color: #6c63ff;
+}
+
+.icon {
+  color: #fff;
+}

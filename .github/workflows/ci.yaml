@@ -1,0 +1,18 @@
+name: Pull request CI
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v4
+        
+        - name: Setup pnpm
+          uses: pnpm/action-setup@v3
+          with:
+            version: 10
+        - name: Install dependecies
+          run: pnpm i
+        - name: Run Linter
+          run: pnpm run lint
