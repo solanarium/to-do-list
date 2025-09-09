@@ -4,7 +4,7 @@ import { type ComponentProps, type FC, useState } from 'react'
 import { classNames } from './helpers/classNames'
 import styles from './Search.module.css'
 
-export const Search: FC<ComponentProps<'input'>> = ({ className }) => {
+export const Search: FC<ComponentProps<'input'>> = ({ className, ...rest }) => {
   const [value, setValue] = useState('')
 
   return (
@@ -16,6 +16,7 @@ export const Search: FC<ComponentProps<'input'>> = ({ className }) => {
         onChange={(event) => setValue(event.target.value)}
         placeholder="Search note..."
         className={styles.input}
+        {...rest}
       />
       <SearchIcon
         className={styles.searchIcon}
