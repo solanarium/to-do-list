@@ -7,24 +7,26 @@ export const getTasksThunk = createAsyncThunk('toDos/getTasks', () => {
   return getTasks()
 })
 
-interface BackendResponse {
+export interface GetToDosResponse {
   limit: number;
   skip: number;
-  todo: Task[];
+  todos: Task[];
   total: number;
 }
 
-interface State {
+interface TasksState {
   isLoading: boolean;
-  response: BackendResponse;
+  list: GetToDosResponse;
+  // error: null | string;
 }
 
-const initialState: State = {
+const initialState: TasksState = {
   isLoading: true,
-  response: {
+  // error: null,
+  list: {
     limit: 0,
     skip: 0,
-    todo: [],
+    todos: [],
     total: 0,
   },
 }
@@ -36,14 +38,14 @@ export const tasksSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getTasksThunk.fulfilled, (state, action) => {
-        state.response = action.payload
+        state.list = action.payload
         state.isLoading = false
       })
       .addCase(getTasksThunk.pending, (state) => {
         state.isLoading = true
       })
       .addCase(getTasksThunk.rejected, (state) => {
-        state.response.todo = []
+        state.list = initialState.list
         state.isLoading = false
       })
   },

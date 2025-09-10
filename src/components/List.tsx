@@ -6,10 +6,8 @@ import styles from './List.module.css'
 import { Task } from './Task'
 
 export const List: FC = () => {
-  const response = useSelector((state) => state.tasks.response)
+  // const todos = useSelector((state) => state.tasks.list.todos)
   const dispatch = useDispatch()
-
-  console.log(response)
 
   useEffect(() => {
     dispatch(getTasksThunk())
@@ -17,6 +15,7 @@ export const List: FC = () => {
 
   return (
     <div className={styles.container}>
+      {/* {todos.map()} */}
       <Task />
     </div>
   )

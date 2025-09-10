@@ -1,7 +1,6 @@
-import type { BackendResponse } from '../../redux/slices/toDoSlice'
-import type { Task } from './consts'
+import type { GetToDosResponse } from '../../redux/slices/toDoSlice'
 
-export const getTasks = (): Promise<Task[]> => {
+export const getTasks = (): Promise<GetToDosResponse> => {
   const response = fetch('https://dummyjson.com/todos').then((res) =>
     res.json(),
   )
