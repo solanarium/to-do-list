@@ -1,5 +1,6 @@
 import { type FC, useEffect } from 'react'
 
+import styles from './App.module.css'
 import { Container } from './components/Container'
 import { Header } from './components/Header'
 import { List } from './components/List'
@@ -18,8 +19,13 @@ const App: FC = () => {
   return (
     <Container>
       <Header />
-      {isLoading ? <Loader /> : <List />}
-      {/* <List /> */}
+      {isLoading ? (
+        <div className={styles.loading_container}>
+          <Loader className={styles.loader_icon} />
+        </div>
+      ) : (
+        <List />
+      )}
     </Container>
   )
 }

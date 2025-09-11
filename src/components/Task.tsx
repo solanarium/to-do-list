@@ -2,9 +2,10 @@ import type { FC } from 'react'
 
 import { classNames } from '../helpers/classNames'
 import type { Task as TaskType } from '../helpers/consts'
-import { updateTaskThunk } from '../redux/slices/toDoSlice'
-import { useDispatch } from '../redux/store'
+import { deleteTaskThunk, updateTaskThunk } from '../redux/slices/toDoSlice'
+import { useDispatch, useSelector } from '../redux/store'
 import { Icon } from './Icon'
+import { Loader } from './Loader'
 import styles from './Task.module.css'
 import { Checkbox } from './uikit/Checkbox'
 
@@ -14,28 +15,44 @@ interface Props {
 
 export const Task: FC<Props> = ({ task }) => {
   const dispatch = useDispatch()
-  // const todo = useSelector((state) => state.tasks.list.todos)
+  const isLoading = useSelector((state) =>
+    state.tasks.todoLoadingIds.includes(task.id),
+  )
 
   return (
-    <button
-      onClick={() => {
-        dispatch(
-          updateTaskThunk({ taskId: task.id, isCompleted: !task.completed }),
-        )
-      }}
-      className={classNames(
-        styles.cart_container,
-        task.completed && styles.checked,
-      )}
-    >
-      <div className={styles.notes}>
-        <Checkbox isChecked={task.completed} />
-        <h3 className={styles.title}>{task.todo}</h3>
-      </div>
+    <div className={styles.task_container}>
+      <button
+        disabled={isLoading}
+        onClick={() => {
+          dispatch(
+            updateTaskThunk({
+              taskId: task.id,
+              isCompleted: !task.completed,
+            }),
+          )
+        }}
+        className={classNames(
+          isLoading && styles.loading,
+          styles.cart_container,
+          task.completed && styles.checked,
+        )}
+      >
+        <div className={styles.notes}>
+          {isLoading ? <Loader /> : <Checkbox isChecked={task.completed} />}
+          <h3 className={styles.title}>{task.todo}</h3>
+        </div>
+      </button>
       <div className={styles.icons}>
-        <Icon name="frame" />
-        <Icon name="trash" />
+        <button className={styles.icon}>
+          <Icon name="frame" />
+        </button>
+        <button
+          className={styles.icon}
+          onClick={() => dispatch(deleteTaskThunk(task.id))}
+        >
+          <Icon name="trash" />
+        </button>
       </div>
-    </button>
+    </div>
   )
 }

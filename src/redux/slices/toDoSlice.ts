@@ -1,17 +1,25 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
+import { deleteTask } from '../../api/deleteTask'
 import { getTasks } from '../../api/getTasks'
 import { updateTask, type UpdateTaskVariables } from '../../api/updateTask'
 import type { Task } from '../../helpers/consts'
 
-export const getTasksThunk = createAsyncThunk('toDos/getTasks', () => {
+export const getTasksThunk = createAsyncThunk('tasks/getTasks', () => {
   return getTasks()
 })
 
 export const updateTaskThunk = createAsyncThunk(
-  'task/updateTask',
+  'tasks/updateTask',
   (params: UpdateTaskVariables) => {
     return updateTask(params)
+  },
+)
+
+export const deleteTaskThunk = createAsyncThunk(
+  'tasks/deleteTask+',
+  (taskId: number) => {
+    return deleteTask(taskId)
   },
 )
 
@@ -23,12 +31,14 @@ export interface GetToDosResponse {
 }
 
 interface TasksState {
+  todoLoadingIds: number[];
   isLoading: boolean;
   list: GetToDosResponse;
   // error: null | string;
 }
 
 const initialState: TasksState = {
+  todoLoadingIds: [],
   isLoading: true,
   // error: null,
   list: {
@@ -57,20 +67,39 @@ export const tasksSlice = createSlice({
         state.isLoading = false
       })
       .addCase(updateTaskThunk.fulfilled, (state, action) => {
-        const updatedToDo = state.list.todos.find((todo) => {
+        const updatedTask = state.list.todos.find((todo) => {
           return todo.id === action.payload.id
         })
 
-        if (updatedToDo) {
-          updatedToDo.completed = action.payload.completed
+        if (updatedTask) {
+          updatedTask.completed = action.payload.completed
         }
+        state.todoLoadingIds = state.todoLoadingIds.filter(
+          (id) => id !== action.meta.arg.taskId,
+        )
       })
-    // .addCase(updateTaskThunk.pending, (state) => {
-    //   state.isLoading = true
-    // })
-    // .addCase(updateTaskThunk.rejected, (state) => {
-    //   state.isLoading = false
-    // })
+      .addCase(updateTaskThunk.pending, (state, action) => {
+        state.todoLoadingIds.push(action.meta.arg.taskId)
+      })
+      .addCase(updateTaskThunk.rejected, (state, action) => {
+        state.todoLoadingIds = state.todoLoadingIds.filter(
+          (id) => id !== action.meta.arg.taskId,
+        )
+      })
+      .addCase(deleteTaskThunk.fulfilled, (state, action) => {
+        console.log(action)
+        state.list.todos = state.list.todos.filter(
+          (todo) => todo.id !== action.payload.id,
+        )
+      })
+      .addCase(deleteTaskThunk.pending, (state, action) => {
+        state.todoLoadingIds.push(action.meta.arg)
+      })
+      .addCase(deleteTaskThunk.rejected, (state, action) => {
+        state.todoLoadingIds = state.todoLoadingIds.filter(
+          (id) => id !== action.meta.arg,
+        )
+      })
   },
 })
 
