@@ -1,7 +1,7 @@
 import { Search as SearchIcon } from 'lucide-react'
 import { type ComponentProps, type FC, useState } from 'react'
 
-import { classNames } from './helpers/classNames'
+import { classNames } from '../helpers/classNames'
 import styles from './Search.module.css'
 
 export const Search: FC<ComponentProps<'input'>> = ({ className, ...rest }) => {

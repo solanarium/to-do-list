@@ -1,11 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import type { Task } from '../../components/helpers/consts'
-import { getTasks } from '../../components/helpers/getTasks'
+import { getTasks } from '../../api/getTasks'
+import { updateTask, type UpdateTaskVariables } from '../../api/updateTask'
+import type { Task } from '../../helpers/consts'
 
 export const getTasksThunk = createAsyncThunk('toDos/getTasks', () => {
   return getTasks()
 })
+
+export const updateTaskThunk = createAsyncThunk(
+  'task/updateTask',
+  (params: UpdateTaskVariables) => {
+    return updateTask(params)
+  },
+)
 
 export interface GetToDosResponse {
   limit: number;
@@ -48,6 +56,21 @@ export const tasksSlice = createSlice({
         state.list = initialState.list
         state.isLoading = false
       })
+      .addCase(updateTaskThunk.fulfilled, (state, action) => {
+        const updatedToDo = state.list.todos.find((todo) => {
+          return todo.id === action.payload.id
+        })
+
+        if (updatedToDo) {
+          updatedToDo.completed = action.payload.completed
+        }
+      })
+    // .addCase(updateTaskThunk.pending, (state) => {
+    //   state.isLoading = true
+    // })
+    // .addCase(updateTaskThunk.rejected, (state) => {
+    //   state.isLoading = false
+    // })
   },
 })
 

@@ -2,7 +2,7 @@ import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 
 import styles from './Filter.module.css'
-import { classNames } from './helpers/classNames'
+import { classNames } from '../helpers/classNames'
 import { Button } from './uikit/Button'
 
 export const Filter = () => {

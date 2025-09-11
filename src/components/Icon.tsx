@@ -7,7 +7,7 @@ interface Props {
 type IconName = keyof typeof icons
 
 const icons = {
-  trash: (
+  trash: (props: { className?: string }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="18"
@@ -28,7 +28,7 @@ const icons = {
       <path d="M7.5 9V12.75" stroke="#CDCDCD" strokeLinecap="round" />
     </svg>
   ),
-  frame: (
+  frame: () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="18"
@@ -44,8 +44,25 @@ const icons = {
       />
     </svg>
   ),
+  loader: () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+  ),
 }
 
 export const Icon: FC<Props> = (props) => {
   return icons[props.name]
 }
+
+// обєкт айконс кліч строка а значеня функціональна компонента

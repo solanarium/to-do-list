@@ -1,6 +1,6 @@
 import type { ComponentProps, FC } from 'react'
 
-import { classNames } from '../helpers/classNames'
+import { classNames } from '../../helpers/classNames'
 import styles from './Button.module.css'
 
 export const Button: FC<ComponentProps<'button'>> = ({

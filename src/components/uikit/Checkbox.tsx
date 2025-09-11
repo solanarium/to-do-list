@@ -1,7 +1,7 @@
 import { Check } from 'lucide-react'
 import { type FC } from 'react'
 
-import { classNames } from '../helpers/classNames'
+import { classNames } from '../../helpers/classNames'
 import styles from './Checkbox.module.css'
 
 interface Props {
