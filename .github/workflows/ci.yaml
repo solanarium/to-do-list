@@ -14,5 +14,7 @@ jobs:
             version: 10
         - name: Install dependecies
           run: pnpm i
+        - name: Run type check
+          run: pnpm run type:check
         - name: Run Linter
           run: pnpm run lint
