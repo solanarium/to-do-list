@@ -1,4 +1,4 @@
-import type { Task } from '../helpers/consts'
+import type { Task } from '../types'
 
 type DeletedTask = {
   isDeleted: boolean,

@@ -1,9 +1,9 @@
 import type { FC } from 'react'
 
 import { classNames } from '../helpers/classNames'
-import type { Task as TaskType } from '../helpers/consts'
 import { deleteTaskThunk, updateTaskThunk } from '../redux/slices/toDoSlice'
 import { useDispatch, useSelector } from '../redux/store'
+import type { Task as TaskType } from '../types'
 import { Icon } from './Icon'
 import { Loader } from './Loader'
 import styles from './Task.module.css'
