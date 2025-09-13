@@ -10,8 +10,8 @@ interface Props {
 
 export const Loader: FC<Props> = ({ className }) => {
   return (
-    <div className={style.loader_container}>
-      <Icon className={classNames(style.loader, className)} name="loader" />
+    <div className={classNames(style.loader_container, className)}>
+      <Icon className={style.loader} name="loader" />
     </div>
   )
 }

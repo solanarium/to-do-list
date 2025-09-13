@@ -11,6 +11,8 @@ export const Filter = () => {
   return (
     <div>
       <Button
+        size="medium"
+        variant="primary"
         onClick={() => setOpen((prevOpen) => !prevOpen)}
         className={classNames(styles.button_filter, open && styles.open)}
       >

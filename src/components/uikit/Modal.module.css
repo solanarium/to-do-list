@@ -1,0 +1,24 @@
+.backdrop {
+  background-color: #000000b3;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: #fff;
+  height: 280px;
+  width: 500px;
+  border-bottom: 16px;
+  position: relative;
+  padding: 16px 28px;
+  border-radius: 16px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+}
