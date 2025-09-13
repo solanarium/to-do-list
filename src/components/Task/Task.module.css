@@ -21,3 +21,9 @@
 .task_container:not(:last-of-type) {
   border-bottom: 1px solid  #6c63ff;
 }
+
+.edit_loader {
+  color: #25252580;
+  width: 18px;
+  height: 18px;
+}
