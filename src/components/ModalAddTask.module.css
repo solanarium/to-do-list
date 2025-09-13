@@ -1,0 +1,29 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  bottom: 16px;
+  right: 32px;
+  left: 32px;
+  position: absolute;
+}
+
+.new_note {
+  margin-top: 12px;
+}
+
+.button_apply {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+}
+
+.loader_apply {
+  width: 18px;
+  height: 18px;
+}
+
+.loader_apply svg {
+  width: 18px;
+  height: 18px;
+}

@@ -1,27 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
+import { addTask } from '../../api/addTask'
 import { deleteTask } from '../../api/deleteTask'
 import { getTasks } from '../../api/getTasks'
-import { updateTask, type UpdateTaskVariables } from '../../api/updateTask'
+import { updateTask } from '../../api/updateTask'
 import type { Task } from '../../helpers/consts'
 
-export const getTasksThunk = createAsyncThunk('tasks/getTasks', () => {
-  return getTasks()
-})
+export const getTasksThunk = createAsyncThunk('tasks/getTasks', getTasks)
 
-export const updateTaskThunk = createAsyncThunk(
-  'tasks/updateTask',
-  (params: UpdateTaskVariables) => {
-    return updateTask(params)
-  },
-)
+export const updateTaskThunk = createAsyncThunk('tasks/updateTask', updateTask)
 
-export const deleteTaskThunk = createAsyncThunk(
-  'tasks/deleteTask+',
-  (taskId: number) => {
-    return deleteTask(taskId)
-  },
-)
+export const deleteTaskThunk = createAsyncThunk('tasks/deleteTask', deleteTask)
+
+export const addTaskThunk = createAsyncThunk('taks/addTask', addTask)
 
 export interface GetToDosResponse {
   limit: number;
@@ -31,14 +22,18 @@ export interface GetToDosResponse {
 }
 
 interface TasksState {
+  isAddTaskModalOpen: boolean;
   todoLoadingIds: number[];
+  newTaskLoading: boolean;
   isLoading: boolean;
   list: GetToDosResponse;
   // error: null | string;
 }
 
 const initialState: TasksState = {
+  isAddTaskModalOpen: false,
   todoLoadingIds: [],
+  newTaskLoading: false,
   isLoading: true,
   // error: null,
   list: {
@@ -52,7 +47,11 @@ const initialState: TasksState = {
 export const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
-  reducers: {},
+  reducers: {
+    toggleIsAddTaskModalOpen: (state) => {
+      state.isAddTaskModalOpen = !state.isAddTaskModalOpen
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getTasksThunk.fulfilled, (state, action) => {
@@ -100,7 +99,20 @@ export const tasksSlice = createSlice({
           (id) => id !== action.meta.arg,
         )
       })
+      .addCase(addTaskThunk.fulfilled, (state, action) => {
+        state.list.todos.push(action.payload)
+        state.newTaskLoading = false
+        state.isAddTaskModalOpen = false
+      })
+      .addCase(addTaskThunk.pending, (state) => {
+        state.newTaskLoading = true
+      })
+      .addCase(addTaskThunk.rejected, (state) => {
+        state.newTaskLoading = false
+      })
   },
 })
+
+export const { toggleIsAddTaskModalOpen } = tasksSlice.actions
 
 export default tasksSlice.reducer

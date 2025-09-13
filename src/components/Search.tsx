@@ -3,13 +3,14 @@ import { type ComponentProps, type FC, useState } from 'react'
 
 import { classNames } from '../helpers/classNames'
 import styles from './Search.module.css'
+import { Input } from './uikit/Input'
 
 export const Search: FC<ComponentProps<'input'>> = ({ className, ...rest }) => {
   const [value, setValue] = useState('')
 
   return (
     <div className={classNames(styles.container, className)}>
-      <input
+      <Input
         name="uikit"
         type="text"
         value={value}

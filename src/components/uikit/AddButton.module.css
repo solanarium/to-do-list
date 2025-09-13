@@ -1,0 +1,36 @@
+.add_button {
+  display: flex;
+  justify-content: center;
+  border-radius: 999px;
+  color: #fff;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background-color: #6c63ff;
+  box-shadow: 0 0 5px #6c63ffcc;
+
+  @media (width >= 768px) {
+    right: calc(50% - 56px - 271px);
+  }
+
+  @media (width >= 968px) {
+    right: calc(50% - 56px - 320px);
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* 376
+768
+1024 */
+
+/* #534cc2
+#6c63ff */
