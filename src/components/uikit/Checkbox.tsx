@@ -1,19 +1,17 @@
-import { Check } from 'lucide-react'
 import { type FC } from 'react'
 
-import { classNames } from '../helpers/classNames'
-import { useToggle } from '../helpers/toggle'
+import { classNames } from '../../helpers/classNames'
+import { Icon } from '../Icon'
 import styles from './Checkbox.module.css'
 
-export const Checkbox: FC = () => {
-  const [isChecked, toggle] = useToggle(false)
+interface Props {
+  isChecked: boolean;
+}
 
+export const Checkbox: FC<Props> = ({ isChecked }) => {
   return (
-    <button
-      onClick={toggle}
-      className={classNames(styles.checkbox, isChecked && styles.checked)}
-    >
-      {isChecked && <Check className={styles.icon} />}
-    </button>
+    <div className={classNames(styles.checkbox, isChecked && styles.checked)}>
+      {isChecked && <Icon name="check" className={styles.icon} />}
+    </div>
   )
 }

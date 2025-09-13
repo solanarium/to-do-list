@@ -1,0 +1,60 @@
+.cart_container {
+  padding: 18px 56px 18px 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
+  background-color: transparent;
+  border: none;
+}
+
+.cart_container.loading {
+  opacity: 0.5;
+}
+
+.notes {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+.title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.icons {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%);
+}
+
+.icon {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.cart_container.checked .icons {
+  display: none;
+}
+
+.cart_container.checked .title {
+  color: #25252580;
+  text-decoration: line-through;
+}
+
+.task_container {
+  position: relative;
+}
+
+.task_container:not(:last-of-type) {
+  border-bottom: 1px solid  #6c63ff;
+}
