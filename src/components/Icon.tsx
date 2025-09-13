@@ -29,7 +29,7 @@ const icons = {
       <path d="M7.5 9V12.75" stroke="#CDCDCD" strokeLinecap="round" />
     </svg>
   ),
-  frame: (props: ComponentProps<'svg'>) => (
+  pencil: (props: ComponentProps<'svg'>) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="18"

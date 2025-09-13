@@ -1,0 +1,22 @@
+.icons {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%);
+}
+
+.icon {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.task_container {
+  position: relative;
+}
+
+.task_container:not(:last-of-type) {
+  border-bottom: 1px solid  #6c63ff;
+}
