@@ -83,6 +83,7 @@ export default defineConfig([
       ],
       'prefer-arrow-callback': ['error', { allowNamedFunctions: true }],
       'func-style': ['error', 'expression', { allowArrowFunctions: true }],
+      'no-console': ['error', { allow: ['warn', 'error'] }],
     },
   },
 ])
