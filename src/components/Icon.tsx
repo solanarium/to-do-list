@@ -91,7 +91,7 @@ const icons = {
       strokeLinejoin="round"
       {...props}
     >
-      <path d="m6 9 6 6 6-6" />
+      <path d="M20 6 9 17l-5-5" />
     </svg>
   ),
   search: (props: ComponentProps<'svg'>) => (
