@@ -1,13 +1,13 @@
 import type { Task } from '../types'
 
-export interface GetTasksDosResponse {
+export interface GetTasksResponse {
   limit: number;
   skip: number;
   todos: Task[];
   total: number;
 }
 
-export const getTasks = (): Promise<GetTasksDosResponse> => {
+export const getTasks = (): Promise<GetTasksResponse> => {
   const response = fetch('https://dummyjson.com/todos').then((res) =>
     res.json(),
   )

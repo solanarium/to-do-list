@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { deleteTask } from '../../api/deleteTask'
-import { getTasks, type GetTasksDosResponse } from '../../api/getTasks'
+import { getTasks, type GetTasksResponse } from '../../api/getTasks'
 import { updateTask, type UpdateTaskVariables } from '../../api/updateTask'
 
 export const getTasksThunk = createAsyncThunk('tasks/getTasks', () => {
@@ -25,7 +25,7 @@ export const deleteTaskThunk = createAsyncThunk(
 interface TasksState {
   todoLoadingIds: number[];
   isLoading: boolean;
-  list: GetTasksDosResponse;
+  list: GetTasksResponse;
   // error: null | string;
 }
 
