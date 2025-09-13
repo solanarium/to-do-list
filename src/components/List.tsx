@@ -2,7 +2,7 @@ import { type FC } from 'react'
 
 import { useSelector } from '../redux/store'
 import styles from './List.module.css'
-import { Task } from './Tasks/Task'
+import { Task } from './Task/Task'
 
 export const List: FC = () => {
   const todos = useSelector((state) => state.tasks.list.todos)

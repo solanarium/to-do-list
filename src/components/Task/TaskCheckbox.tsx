@@ -37,7 +37,7 @@ export const TaskCheckbox: FC<Props> = ({ task }) => {
     >
       <div className={styles.notes}>
         {isLoading ? <Loader /> : <Checkbox isChecked={task.completed} />}
-        <h3 className={styles.title}>{task.todo}</h3>
+        <p className={styles.title}>{task.todo}</p>
       </div>
     </button>
   )
