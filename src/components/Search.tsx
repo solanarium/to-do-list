@@ -1,7 +1,7 @@
-import { Search as SearchIcon } from 'lucide-react'
 import { type ComponentProps, type FC, useState } from 'react'
 
 import { classNames } from '../helpers/classNames'
+import { Icon } from './Icon'
 import styles from './Search.module.css'
 import { Input } from './uikit/Input'
 
@@ -19,7 +19,8 @@ export const Search: FC<ComponentProps<'input'>> = ({ className, ...rest }) => {
         className={styles.input}
         {...rest}
       />
-      <SearchIcon
+      <Icon
+        name="search"
         className={styles.search_icon}
         strokeWidth={1.5}
         color="#6C63FF"
