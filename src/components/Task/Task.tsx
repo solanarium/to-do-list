@@ -37,13 +37,14 @@ export const Task: FC<Props> = ({ task, isEditMode, setEditId }) => {
       dispatch(
         updateTaskThunk({
           taskId: task.id,
-          todo: editInputRef.current?.value,
+          todo: editInputRef.current?.value as string,
+          completed: task.completed,
         }),
       ).then(() => setEditId(null))
     } else {
       setEditId(null)
     }
-  }, [dispatch, task.id, setEditId, task.todo])
+  }, [dispatch, task, setEditId])
 
   useKeyboard(
     'Enter',
