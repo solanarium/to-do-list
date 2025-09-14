@@ -14,7 +14,7 @@ export const List: FC = () => {
         return (
           <Task
             setEditId={setEditId}
-            editId={editId}
+            isEditMode={editId === todo.id}
             key={todo.id}
             task={todo}
           />
