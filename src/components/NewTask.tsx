@@ -7,14 +7,14 @@ import { AddButton } from './uikit/AddButton'
 
 export const NewTask: FC = () => {
   const dispatch = useDispatch()
-  const IsAddTaskModalOpen = useSelector(
+  const isAddTaskModalOpen = useSelector(
     (state) => state.tasks.isAddTaskModalOpen,
   )
 
   return (
     <>
       <AddButton onClick={() => dispatch(toggleIsAddTaskModalOpen())} />
-      {IsAddTaskModalOpen && <ModalAddTask />}
+      {isAddTaskModalOpen && <ModalAddTask />}
     </>
   )
 }
