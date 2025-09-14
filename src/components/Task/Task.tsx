@@ -3,10 +3,10 @@ import {
   type FC,
   type SetStateAction,
   useCallback,
-  useEffect,
   useRef,
 } from 'react'
 
+import { useKeyboard } from '../../hooks/useKeyboard'
 import { updateTaskThunk } from '../../redux/slices/toDoSlice'
 import { useDispatch, useSelector } from '../../redux/store'
 import type { Task as TaskType } from '../../types'
@@ -45,19 +45,15 @@ export const Task: FC<Props> = ({ task, isEditMode, setEditId }) => {
     }
   }, [dispatch, task.id, setEditId, task.todo])
 
-  useEffect(() => {
-    const listener = (event: KeyboardEvent) => {
-      if (isEditMode && event.key === 'Enter') {
+  useKeyboard(
+    'Enter',
+    () => {
+      if (isEditMode) {
         submit()
       }
-    }
-
-    window.addEventListener('keydown', listener)
-
-    return () => {
-      window.removeEventListener('keydown', listener)
-    }
-  }, [submit, setEditId, task.todo, isEditMode])
+    },
+    [isEditMode, submit],
+  )
 
   return (
     <div className={styles.task_container}>
