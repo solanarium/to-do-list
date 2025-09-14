@@ -5,6 +5,7 @@ import { Container } from './components/Container'
 import { Header } from './components/Header'
 import { List } from './components/List'
 import { Loader } from './components/Loader'
+import { NewTask } from './components/NewTask'
 import { getTasksThunk } from './redux/slices/toDoSlice'
 import { useDispatch, useSelector } from './redux/store'
 
@@ -24,7 +25,10 @@ const App: FC = () => {
           <Loader className={styles.loader_icon} />
         </div>
       ) : (
-        <List />
+        <>
+          <List />
+          <NewTask />
+        </>
       )}
     </Container>
   )
