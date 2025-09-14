@@ -8,7 +8,7 @@ export const List: FC = () => {
   const todos = useSelector((state) => state.tasks.list.todos)
 
   return (
-    <div className={styles.list_container}>
+    <div className={styles.container}>
       {todos.map((todo) => {
         return <Task key={todo.id} task={todo} />
       })}

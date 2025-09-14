@@ -28,9 +28,8 @@
   height: 24px;
 }
 
-/* 376
-768
-1024 */
-
-/* #534cc2
-#6c63ff */
+.add_button:hover {
+  background-color: #534cc2;
+  outline: #6c63ff 2px solid;
+  box-shadow: none;
+}

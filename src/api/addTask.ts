@@ -1,7 +1,7 @@
-import type { Task } from '../helpers/consts'
+import type { Task } from '../types'
 
 export const addTask = (task: string): Promise<Task> => {
-  const promise = fetch('https://dummyjson.com/todos/add', {
+  return fetch('https://dummyjson.com/todos/add', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -10,6 +10,4 @@ export const addTask = (task: string): Promise<Task> => {
       userId: 5,
     }),
   }).then((res) => res.json())
-
-  return promise
 }

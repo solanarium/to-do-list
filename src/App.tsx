@@ -25,10 +25,10 @@ const App: FC = () => {
           <Loader className={styles.loader_icon} />
         </div>
       ) : (
-        <div>
+        <>
           <List />
           <NewTask />
-        </div>
+        </>
       )}
     </Container>
   )
