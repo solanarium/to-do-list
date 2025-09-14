@@ -64,6 +64,7 @@ export const tasksSlice = createSlice({
 
         if (updatedTask) {
           updatedTask.completed = action.payload.completed
+          updatedTask.todo = action.payload.todo
         }
         state.todoLoadingIds = state.todoLoadingIds.filter(
           (id) => id !== action.meta.arg.taskId,

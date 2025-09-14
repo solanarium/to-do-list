@@ -11,7 +11,7 @@ interface Props {
 export const Checkbox: FC<Props> = ({ isChecked }) => {
   return (
     <div className={classNames(styles.checkbox, isChecked && styles.checked)}>
-      {isChecked && <Icon name="check" className={styles.icon} />}
+      {isChecked && <Icon name="checkbox" className={styles.icon} />}
     </div>
   )
 }

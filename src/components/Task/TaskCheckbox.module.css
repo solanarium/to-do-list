@@ -1,0 +1,39 @@
+.notes {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 20px;
+  overflow: hidden;
+  font-weight: 600;
+  font-family: Kanit, sans-serif;
+}
+
+.title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.cart_container {
+  padding: 18px 56px 18px 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
+  background-color: transparent;
+  border: none;
+}
+
+.cart_container.loading {
+  opacity: 0.5;
+}
+
+.cart_container.checked .icons {
+  display: none;
+}
+
+.cart_container.checked .title {
+  color: #25252580;
+  text-decoration: line-through;
+}
