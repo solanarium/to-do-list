@@ -2,21 +2,21 @@ import type { Task } from '../types'
 
 export interface UpdateTaskVariables {
   taskId: number;
-  Completed?: boolean;
+  completed?: boolean;
   todo?: string;
 }
 
 export const updateTask = ({
   taskId,
-  Completed,
+  completed,
   todo,
 }: UpdateTaskVariables): Promise<Task> => {
   return fetch(`https://dummyjson.com/todos/${taskId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      completed: Completed,
-      todo: todo,
+      completed,
+      todo,
     }),
   }).then((res) => res.json())
 }

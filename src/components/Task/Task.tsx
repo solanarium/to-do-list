@@ -26,7 +26,7 @@ interface Props {
 }
 
 export const Task: FC<Props> = ({ task, isEditMode, setEditId }) => {
-  const editInputRef = useRef(null as HTMLInputElement | null)
+  const editInputRef = useRef<HTMLInputElement | null>(null)
   const dispatch = useDispatch()
   const isLoading = useSelector((state) =>
     state.tasks.todoLoadingIds.includes(task.id),
@@ -47,14 +47,8 @@ export const Task: FC<Props> = ({ task, isEditMode, setEditId }) => {
 
   useEffect(() => {
     const listener = (event: KeyboardEvent) => {
-      if (isEditMode) {
-        if (event.key === 'Enter') {
-          if (editInputRef.current?.value !== task.todo) {
-            submit()
-          } else {
-            setEditId(null)
-          }
-        }
+      if (isEditMode && event.key === 'Enter') {
+        submit()
       }
     }
 
@@ -80,12 +74,7 @@ export const Task: FC<Props> = ({ task, isEditMode, setEditId }) => {
                 {isLoading ? (
                   <Loader className={styles.edit_loader} />
                 ) : (
-                  <Check
-                    onClick={() => {
-                      submit()
-                    }}
-                    className={styles.icon}
-                  />
+                  <Check onClick={submit} className={styles.icon} />
                 )}
 
                 <Cancel
