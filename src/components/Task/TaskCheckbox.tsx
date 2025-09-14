@@ -26,6 +26,7 @@ export const TaskCheckbox: FC<Props> = ({ task }) => {
           updateTaskThunk({
             taskId: task.id,
             completed: !task.completed,
+            todo: task.todo,
           }),
         )
       }}
