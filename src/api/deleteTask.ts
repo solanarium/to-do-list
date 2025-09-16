@@ -1,6 +1,6 @@
 import type { Task } from '../types'
 
-type DeletedTask = {
+export type DeletedTask = {
   isDeleted: boolean,
   deletedOn: string,
 } & Task

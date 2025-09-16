@@ -7,7 +7,6 @@ export const addTask = (task: string): Promise<Task> => {
     body: JSON.stringify({
       todo: task,
       completed: false,
-      userId: 5,
     }),
   }).then((res) => res.json())
 }
