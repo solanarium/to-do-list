@@ -1,25 +1,18 @@
-import { createDefaultPreset } from 'ts-jest'
-
 /** @type {import("jest").Config} **/
-
-const tsJestTransformCfg = createDefaultPreset().transform
-
 export default {
-  testEnvironment: 'jsdom',
+  rootDir: '.',
+  testEnvironment: 'jest-fixed-jsdom',
   moduleNameMapper: {
     '\\.module\\.css$': 'identity-obj-proxy',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
   },
   transform: {
-    ...tsJestTransformCfg,
-    '^.+\\.ts$': ['ts-jest', { useESM: true }],
+    '^.+\\.(ts|tsx)$': [
+      'ts-jest',
+      { tsconfig: './tsconfig.tests.json', useESM: true },
+    ],
   },
-  globals: {
-    'ts-jest': {
-      tsConfig: 'tsconfig.json', // або tsconfig.jest.json
-      useESM: true,
-    },
-  },
-  extensionsToTreatAsEsm: ['.ts', '.tsx'], // щоб ts-jest обробляв TS як ESM
+  transformIgnorePatterns: ['/node_modules/(?!(identity-obj-proxy)/)'],
+  extensionsToTreatAsEsm: ['.ts', '.tsx'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 }
