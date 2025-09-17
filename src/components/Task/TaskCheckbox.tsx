@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
 import { classNames } from '../../helpers/classNames'
-import { updateTaskThunk } from '../../redux/slices/toDoSlice'
+import { updateTaskThunk } from '../../redux/slices/thunks'
 import { useDispatch, useSelector } from '../../redux/store'
 import type { Task } from '../../types'
 import { Loader } from '../Loader'
@@ -20,6 +20,7 @@ export const TaskCheckbox: FC<Props> = ({ task }) => {
 
   return (
     <button
+      data-testid="button-task"
       disabled={isLoading}
       onClick={() => {
         dispatch(

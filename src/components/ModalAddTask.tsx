@@ -1,9 +1,7 @@
 import { type FC, useState } from 'react'
 
-import {
-  addTaskThunk,
-  toggleIsAddTaskModalOpen,
-} from '../redux/slices/toDoSlice'
+import { addTaskThunk } from '../redux/slices/thunks'
+import { toggleIsAddTaskModalOpen } from '../redux/slices/toDoSlice'
 import { useDispatch, useSelector } from '../redux/store'
 import { Loader } from './Loader'
 import styles from './ModalAddTask.module.css'
