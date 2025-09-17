@@ -1,8 +1,8 @@
 import fetchMock, { manageFetchMockGlobally } from '@fetch-mock/jest'
 import { jest } from '@jest/globals'
 
-import { getTasks } from '../../api/getTasks'
-import type { Task } from '../../types'
+import { getTasks } from '../../../api/getTasks'
+import type { Task } from '../../../types'
 
 manageFetchMockGlobally(jest)
 

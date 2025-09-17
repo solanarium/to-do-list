@@ -1,6 +1,6 @@
 import type { ComponentProps, FC } from 'react'
 
-import { deleteTaskThunk } from '../../redux/slices/toDoSlice'
+import { deleteTaskThunk } from '../../redux/slices/thunks'
 import { useDispatch } from '../../redux/store'
 import type { Task } from '../../types'
 import { Icon } from '../Icon'

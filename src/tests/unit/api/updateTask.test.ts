@@ -1,7 +1,7 @@
 import fetchMock from '@fetch-mock/jest'
 
-import { updateTask } from '../../api/updateTask'
-import type { Task } from '../../types'
+import { updateTask } from '../../../api/updateTask'
+import type { Task } from '../../../types'
 
 const mockTask: Task = {
   id: 0,

@@ -1,6 +1,6 @@
 import fetchMock from '@fetch-mock/jest'
 
-import { type DeletedTask, deleteTask } from '../../api/deleteTask'
+import { type DeletedTask, deleteTask } from '../../../api/deleteTask'
 
 const date = new Date('2025-09-16T17:32:47.808Z')
 

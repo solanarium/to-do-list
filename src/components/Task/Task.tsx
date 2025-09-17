@@ -7,7 +7,7 @@ import {
 } from 'react'
 
 import { useKeyboard } from '../../hooks/useKeyboard'
-import { updateTaskThunk } from '../../redux/slices/toDoSlice'
+import { updateTaskThunk } from '../../redux/slices/thunks'
 import { useDispatch, useSelector } from '../../redux/store'
 import type { Task as TaskType } from '../../types'
 import { Loader } from '../Loader'

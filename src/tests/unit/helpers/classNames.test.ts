@@ -1,4 +1,4 @@
-import { classNames } from '../helpers/classNames'
+import { classNames } from '../../../helpers/classNames'
 
 describe('Unit | Helpers | classNames', () => {
   test('it returns correct classes', () => {
