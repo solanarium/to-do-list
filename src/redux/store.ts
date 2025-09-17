@@ -1,15 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import {
   useDispatch as useReduxDispatch,
   useSelector as useReduxSelector,
 } from 'react-redux'
 
-import tasks from './slices/toDoSlice'
+import tasksReducer from './slices/toDoSlice'
+
+export const rootReducer = combineReducers({
+  tasks: tasksReducer,
+})
 
 export const store = configureStore({
-  reducer: {
-    tasks,
-  },
+  reducer: rootReducer,
 })
 
 export const useDispatch = () => useReduxDispatch() as AppDispatch

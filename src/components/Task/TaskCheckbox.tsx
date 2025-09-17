@@ -9,7 +9,7 @@ import { Checkbox } from '../uikit/Checkbox'
 import styles from './TaskCheckbox.module.css'
 
 interface Props {
-  task: Task;
+  task: Task
 }
 
 export const TaskCheckbox: FC<Props> = ({ task }) => {
@@ -38,7 +38,11 @@ export const TaskCheckbox: FC<Props> = ({ task }) => {
       )}
     >
       <div className={styles.notes}>
-        {isLoading ? <Loader /> : <Checkbox isChecked={task.completed} />}
+        {isLoading ? (
+          <Loader data-testid="checkbox-loader" />
+        ) : (
+          <Checkbox isChecked={task.completed} />
+        )}
         <p className={styles.title}>{task.todo}</p>
       </div>
     </button>

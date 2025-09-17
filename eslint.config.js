@@ -70,7 +70,7 @@ export default defineConfig([
         {
           singleQuote: true,
           semi: false,
-          parser: 'flow',
+          parser: 'typescript',
         },
       ],
       'prefer-arrow/prefer-arrow-functions': [

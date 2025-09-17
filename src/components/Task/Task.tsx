@@ -20,9 +20,9 @@ import { TaskCheckbox } from './TaskCheckbox'
 import { Trash } from './Trash'
 
 interface Props {
-  task: TaskType;
-  isEditMode: boolean;
-  setEditId: Dispatch<SetStateAction<number | null>>;
+  task: TaskType
+  isEditMode: boolean
+  setEditId: Dispatch<SetStateAction<number | null>>
 }
 
 export const Task: FC<Props> = ({ task, isEditMode, setEditId }) => {

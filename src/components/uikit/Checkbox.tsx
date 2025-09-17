@@ -5,7 +5,7 @@ import { Icon } from '../Icon'
 import styles from './Checkbox.module.css'
 
 interface Props {
-  isChecked: boolean;
+  isChecked: boolean
 }
 
 export const Checkbox: FC<Props> = ({ isChecked }) => {
