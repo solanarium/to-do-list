@@ -1,8 +1,6 @@
-import userEvent from '@testing-library/user-event'
+import { PageObject } from './-page-object'
 
-import type { render } from '../test-utils'
-
-export class TaskPageObject {
+export class TaskPageObject extends PageObject {
   get checkbox() {
     return this.screen.getByTestId('task-checkbox')
   }
@@ -36,32 +34,30 @@ export class TaskPageObject {
   }
 
   async toggleTask() {
-    await userEvent.click(this.screen.getByTestId('button-task'))
+    await this.click(this.screen.getByTestId('button-task'))
   }
 
   async clickPencil() {
-    await userEvent.click(this.screen.getByTestId('pencil'))
+    await this.click(this.screen.getByTestId('pencil'))
   }
 
   async clickCheck() {
-    await userEvent.click(this.screen.getByTestId('check'))
+    await this.click(this.screen.getByTestId('check'))
   }
 
   async typeName(name: string) {
-    await userEvent.type(this.input, name)
+    await this.type(this.input, name)
   }
 
   async clickCancel() {
-    await userEvent.click(this.cancel)
+    await this.click(this.cancel)
   }
 
   async pressEnter() {
-    await userEvent.keyboard('{Enter}')
+    await this.keyboard('{Enter}')
   }
 
   async clickTrash() {
-    await userEvent.click(this.trash)
+    await this.click(this.trash)
   }
-
-  constructor(private readonly screen: ReturnType<typeof render>) {}
 }

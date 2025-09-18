@@ -1,7 +1,6 @@
-import type { render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { PageObject } from './-page-object'
 
-export class AddTaskPageObject {
+export class AddTaskPageObject extends PageObject {
   get addButton() {
     return this.screen.getByRole('button', {
       name: 'Add Task',
@@ -28,20 +27,18 @@ export class AddTaskPageObject {
   }
 
   async openModal() {
-    await userEvent.click(this.addButton)
+    await this.click(this.addButton)
   }
 
   async typeTask(value: string) {
-    await userEvent.type(this.input, value)
+    await this.type(this.input, value)
   }
 
   async clickApply() {
-    await userEvent.click(this.applyButton)
+    await this.click(this.applyButton)
   }
 
   async closeModal() {
-    await userEvent.click(this.cancelButton)
+    await this.click(this.cancelButton)
   }
-
-  constructor(private readonly screen: ReturnType<typeof render>) {}
 }

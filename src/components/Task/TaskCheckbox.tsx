@@ -23,7 +23,7 @@ export const TaskCheckbox: FC<Props> = ({ task }) => {
       data-testid="button-task"
       disabled={isLoading}
       onClick={() => {
-        dispatch(
+        void dispatch(
           updateTaskThunk({
             taskId: task.id,
             completed: !task.completed,

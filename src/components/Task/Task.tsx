@@ -35,7 +35,7 @@ export const Task: FC<Props> = ({ task, isEditMode, setEditId, ...rest }) => {
 
   const submit = useCallback(() => {
     if (editInputRef.current?.value !== task.todo) {
-      dispatch(
+      void dispatch(
         updateTaskThunk({
           taskId: task.id,
           todo: editInputRef.current?.value as string,

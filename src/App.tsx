@@ -14,7 +14,7 @@ const App: FC = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getTasksThunk())
+    void dispatch(getTasksThunk())
   }, [dispatch])
 
   return (
