@@ -1,5 +1,3 @@
-import userEvent from '@testing-library/user-event'
-
 import { PageObject } from './-page-object'
 
 export class TaskPageObject extends PageObject {
@@ -16,6 +14,6 @@ export class TaskPageObject extends PageObject {
   }
 
   async toggleTask() {
-    await userEvent.click(this.screen.getByTestId('button-task'))
+    await this.click(this.screen.getByTestId('button-task'))
   }
 }
