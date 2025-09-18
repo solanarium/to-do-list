@@ -36,9 +36,7 @@ export const ModalAddTask: FC = () => {
           disabled={isLoading || !value}
           size="large"
           variant="primary"
-          onClick={() => {
-            dispatch(addTaskThunk(value))
-          }}
+          onClick={() => dispatch(addTaskThunk(value))}
           className={styles.button_apply}
         >
           {isLoading && <Loader className={styles.loader_apply} />}

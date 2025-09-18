@@ -34,6 +34,31 @@ export default defineConfig([
   },
   eslintPluginPrettierRecommended,
   tseslint.configs.recommended,
+  tseslint.config({
+    files: [
+      'src/**/*.{ts,tsx}',
+      'tests/**/*.{ts,tsx}',
+      'test-support/**/*.{ts,tsx}',
+    ],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        project: [
+          './tsconfig.json',
+          './tsconfig.app.json',
+          './tsconfig.node.json',
+          './tsconfig.tests.json',
+        ],
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tseslint.plugin,
+    },
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'error',
+    },
+  }),
   reactHooks.configs['recommended-latest'],
   {
     plugins: {
