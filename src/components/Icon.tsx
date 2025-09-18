@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from 'react'
 
 type Props = {
-  name: IconName,
+  name: IconName
 } & ComponentProps<'svg'>
 
 type IconName = keyof typeof icons

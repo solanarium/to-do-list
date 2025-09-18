@@ -15,7 +15,7 @@ export const ModalAddTask: FC = () => {
   const dispatch = useDispatch()
 
   return (
-    <Modal title="NEW NOTE">
+    <Modal data-testid="add-task-modal" title="NEW NOTE">
       <Input
         name="newNote"
         type="text"

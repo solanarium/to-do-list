@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { rootReducer, type RootState } from '../redux/store'
 
 interface Props {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export const setupStore = (preloadedState?: Partial<RootState>) => {

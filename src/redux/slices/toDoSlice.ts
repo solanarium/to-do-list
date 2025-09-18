@@ -9,11 +9,11 @@ import {
 } from './thunks'
 
 interface TasksState {
-  isAddTaskModalOpen: boolean;
-  todoLoadingIds: number[];
-  newTaskLoading: boolean;
-  isLoading: boolean;
-  list: GetTasksResponse;
+  isAddTaskModalOpen: boolean
+  todoLoadingIds: number[]
+  newTaskLoading: boolean
+  isLoading: boolean
+  list: GetTasksResponse
   // error: null | string;
 }
 
@@ -76,6 +76,9 @@ export const tasksSlice = createSlice({
       .addCase(deleteTaskThunk.fulfilled, (state, action) => {
         state.list.todos = state.list.todos.filter(
           (todo) => todo.id !== action.payload.id,
+        )
+        state.todoLoadingIds = state.todoLoadingIds.filter(
+          (id) => id !== action.meta.arg,
         )
       })
       .addCase(deleteTaskThunk.pending, (state, action) => {

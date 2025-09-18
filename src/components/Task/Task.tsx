@@ -1,4 +1,5 @@
 import {
+  type ComponentProps,
   type Dispatch,
   type FC,
   type SetStateAction,
@@ -19,13 +20,13 @@ import styles from './Task.module.css'
 import { TaskCheckbox } from './TaskCheckbox'
 import { Trash } from './Trash'
 
-interface Props {
+type Props = {
   task: TaskType
   isEditMode: boolean
   setEditId: Dispatch<SetStateAction<number | null>>
-}
+} & ComponentProps<'div'>
 
-export const Task: FC<Props> = ({ task, isEditMode, setEditId }) => {
+export const Task: FC<Props> = ({ task, isEditMode, setEditId, ...rest }) => {
   const editInputRef = useRef<HTMLInputElement | null>(null)
   const dispatch = useDispatch()
   const isLoading = useSelector((state) =>
@@ -57,7 +58,7 @@ export const Task: FC<Props> = ({ task, isEditMode, setEditId }) => {
   )
 
   return (
-    <div className={styles.task_container}>
+    <div className={styles.task_container} {...rest}>
       {isEditMode ? (
         <EditTask inputRef={editInputRef} isLoading={isLoading} task={task} />
       ) : (
@@ -71,10 +72,15 @@ export const Task: FC<Props> = ({ task, isEditMode, setEditId }) => {
                 {isLoading ? (
                   <Loader className={styles.edit_loader} />
                 ) : (
-                  <Check onClick={submit} className={styles.icon} />
+                  <Check
+                    data-testid="check"
+                    onClick={submit}
+                    className={styles.icon}
+                  />
                 )}
 
                 <Cancel
+                  data-testid="cancel"
                   onClick={() => setEditId(null)}
                   className={styles.icon}
                 />
@@ -82,12 +88,17 @@ export const Task: FC<Props> = ({ task, isEditMode, setEditId }) => {
             ) : (
               <>
                 <Pencil
+                  data-testid="pencil"
                   className={styles.icon}
                   onClick={() => {
                     setEditId(task.id)
                   }}
                 />
-                <Trash task={task} className={styles.icon} />
+                <Trash
+                  data-testid="trash"
+                  task={task}
+                  className={styles.icon}
+                />
               </>
             )}
           </>

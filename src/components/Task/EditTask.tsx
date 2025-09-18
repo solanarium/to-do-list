@@ -5,9 +5,9 @@ import type { Task } from '../../types'
 import styles from './EditTask.module.css'
 
 interface Props {
-  task: Task;
-  isLoading: boolean;
-  inputRef: RefObject<null | HTMLInputElement>;
+  task: Task
+  isLoading: boolean
+  inputRef: RefObject<null | HTMLInputElement>
 }
 
 export const EditTask: FC<Props> = ({ task, isLoading, inputRef }) => {

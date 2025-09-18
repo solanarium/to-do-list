@@ -1,8 +1,8 @@
 import type { Task } from '../types'
 
 export type DeletedTask = {
-  isDeleted: boolean,
-  deletedOn: string,
+  isDeleted: boolean
+  deletedOn: string
 } & Task
 
 export const deleteTask = (taskId: number): Promise<DeletedTask> => {

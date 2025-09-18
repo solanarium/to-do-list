@@ -1,9 +1,9 @@
 import type { Task } from '../types'
 
 export interface UpdateTaskVariables {
-  taskId: number;
-  completed: boolean;
-  todo: string;
+  taskId: number
+  completed: boolean
+  todo: string
 }
 
 export const updateTask = ({

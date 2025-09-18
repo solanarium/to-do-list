@@ -5,7 +5,7 @@ import type { RootState } from '../redux/store'
 import { getAllProviders } from './getAllProviders'
 
 interface Options {
-  initialState?: Partial<RootState>;
+  initialState?: Partial<RootState>
 }
 
 const customRender = (children: ReactNode, options: Options = {}) =>

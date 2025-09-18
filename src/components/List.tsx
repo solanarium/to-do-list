@@ -13,6 +13,7 @@ export const List: FC = () => {
       {todos.map((todo) => {
         return (
           <Task
+            data-testid="task"
             setEditId={setEditId}
             isEditMode={editId === todo.id}
             key={todo.id}
