@@ -1,24 +1,19 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
-import { addTask } from '../../api/addTask'
-import { deleteTask } from '../../api/deleteTask'
-import { getTasks, type GetTasksResponse } from '../../api/getTasks'
-import { updateTask } from '../../api/updateTask'
-
-export const getTasksThunk = createAsyncThunk('tasks/getTasks', getTasks)
-
-export const updateTaskThunk = createAsyncThunk('tasks/updateTask', updateTask)
-
-export const deleteTaskThunk = createAsyncThunk('tasks/deleteTask', deleteTask)
-
-export const addTaskThunk = createAsyncThunk('taks/addTask', addTask)
+import { type GetTasksResponse } from '../../api/getTasks'
+import {
+  addTaskThunk,
+  deleteTaskThunk,
+  getTasksThunk,
+  updateTaskThunk,
+} from './thunks'
 
 interface TasksState {
-  isAddTaskModalOpen: boolean;
-  todoLoadingIds: number[];
-  newTaskLoading: boolean;
-  isLoading: boolean;
-  list: GetTasksResponse;
+  isAddTaskModalOpen: boolean
+  todoLoadingIds: number[]
+  newTaskLoading: boolean
+  isLoading: boolean
+  list: GetTasksResponse
   // error: null | string;
 }
 
@@ -81,6 +76,9 @@ export const tasksSlice = createSlice({
       .addCase(deleteTaskThunk.fulfilled, (state, action) => {
         state.list.todos = state.list.todos.filter(
           (todo) => todo.id !== action.payload.id,
+        )
+        state.todoLoadingIds = state.todoLoadingIds.filter(
+          (id) => id !== action.meta.arg,
         )
       })
       .addCase(deleteTaskThunk.pending, (state, action) => {

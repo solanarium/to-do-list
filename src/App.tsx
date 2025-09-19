@@ -6,7 +6,7 @@ import { Header } from './components/Header'
 import { List } from './components/List'
 import { Loader } from './components/Loader'
 import { NewTask } from './components/NewTask'
-import { getTasksThunk } from './redux/slices/toDoSlice'
+import { getTasksThunk } from './redux/slices/thunks'
 import { useDispatch, useSelector } from './redux/store'
 
 const App: FC = () => {
@@ -14,7 +14,7 @@ const App: FC = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getTasksThunk())
+    void dispatch(getTasksThunk())
   }, [dispatch])
 
   return (

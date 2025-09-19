@@ -1,10 +1,10 @@
 import type { Task } from '../types'
 
 export interface GetTasksResponse {
-  limit: number;
-  skip: number;
-  todos: Task[];
-  total: number;
+  limit: number
+  skip: number
+  todos: Task[]
+  total: number
 }
 
 export const getTasks = (): Promise<GetTasksResponse> => {

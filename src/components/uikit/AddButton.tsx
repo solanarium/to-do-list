@@ -10,6 +10,7 @@ export const AddButton: FC<ComponentProps<'button'>> = ({
 }) => {
   return (
     <button className={classNames(styles.add_button, className)} {...rest}>
+      <p className="sr_only">Add Task</p>
       <Icon className={styles.icon} name="plus" />
     </button>
   )

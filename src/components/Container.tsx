@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react'
 import styles from './Container.module.css'
 
 interface Props {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export const Container: FC<Props> = ({ children }) => {

@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from 'react'
 
 type Props = {
-  name: IconName,
+  name: IconName
 } & ComponentProps<'svg'>
 
 type IconName = keyof typeof icons
@@ -153,9 +153,9 @@ const icons = {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       {...props}
     >
       <path d="m6 9 6 6 6-6" />
@@ -166,5 +166,5 @@ const icons = {
 export const Icon: FC<Props> = ({ name, ...rest }) => {
   const Component = icons[name]
 
-  return <Component {...rest} />
+  return <Component data-testid={`icon-${name}`} {...rest} />
 }

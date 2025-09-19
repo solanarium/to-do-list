@@ -1,9 +1,7 @@
 import { type FC, useState } from 'react'
 
-import {
-  addTaskThunk,
-  toggleIsAddTaskModalOpen,
-} from '../redux/slices/toDoSlice'
+import { addTaskThunk } from '../redux/slices/thunks'
+import { toggleIsAddTaskModalOpen } from '../redux/slices/toDoSlice'
 import { useDispatch, useSelector } from '../redux/store'
 import { Loader } from './Loader'
 import styles from './ModalAddTask.module.css'
@@ -17,7 +15,7 @@ export const ModalAddTask: FC = () => {
   const dispatch = useDispatch()
 
   return (
-    <Modal title="NEW NOTE">
+    <Modal data-testid="add-task-modal" title="NEW NOTE">
       <Input
         name="newNote"
         type="text"
@@ -38,9 +36,7 @@ export const ModalAddTask: FC = () => {
           disabled={isLoading || !value}
           size="large"
           variant="primary"
-          onClick={() => {
-            dispatch(addTaskThunk(value))
-          }}
+          onClick={() => dispatch(addTaskThunk(value))}
           className={styles.button_apply}
         >
           {isLoading && <Loader className={styles.loader_apply} />}
