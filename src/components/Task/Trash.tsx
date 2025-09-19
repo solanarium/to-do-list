@@ -15,7 +15,7 @@ export const Trash: FC<Props> = ({ task, ...rest }) => {
   return (
     <button
       onClick={() => {
-        dispatch(deleteTaskThunk(task.id))
+        void dispatch(deleteTaskThunk(task.id))
       }}
       {...rest}
     >

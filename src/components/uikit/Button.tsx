@@ -4,8 +4,8 @@ import { classNames } from '../../helpers/classNames'
 import styles from './Button.module.css'
 
 type Props = {
-  size: 'medium' | 'large',
-  variant: 'primary' | 'secondary',
+  size: 'medium' | 'large'
+  variant: 'primary' | 'secondary'
 } & ComponentProps<'button'>
 
 export const Button: FC<Props> = ({
